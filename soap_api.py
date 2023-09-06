@@ -9,5 +9,8 @@ with open('config.yaml', encoding='utf-8') as f:
 settings = Settings(strict=False)
 client = Client(wsdl=wsdl, settings=settings)
 
-if __name__ == '__main__':
-    print(client.service.checkText('молако'))
+
+def check_text(text: str) -> list[str]:
+    resp = client.service.checkText(text)
+    return resp[0]['s']
+
